@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Moonlight Alliance — Discord Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon logo -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    :root {
+      --bg: #07040c;
+      --panel: rgba(26, 13, 40, 0.93);
+      --accent: #b47aff;
+      --accent2: #8e42e8;
+      --text-main: #eae0ff;
+      --text-soft: #c7adee;
+      --border: #322045;
+      --shadow: 0 6px 36px #8e42e82a;
+      --radius-xl: 2.7rem;
+      --radius-lg: 1.1rem;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      font-size: 1.12rem;
+      overflow-x: hidden;
+    }
+    /* Logo and Hero Area */
+    .hero {
+      margin: 0 auto 2.6rem auto;
+      max-width: 730px;
+      padding: 3.6rem 1.4rem 0.9rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero-logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(120deg, #14042c 80%, #8e42e8 120%);
+      border: 3px solid var(--accent);
+      box-shadow: 0 2px 38px #b47aff38;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.2s;
+    }
+    .hero-logo img {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      display: block;
+    }
+    .hero-title {
+      font-size: 2.45rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin: 0 0 0.3em 0;
+      text-shadow: 0 0 9px var(--accent2), 0 0 2px #000;
+    }
+    .hero-sub {
+      font-size: 1.27rem;
+      color: var(--text-soft);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    .hero-desc {
+      color: var(--text-main);
+      font-size: 1.08rem;
+      margin-bottom: 1.2rem;
+      margin-top: 0.5em;
+      max-width: 600px;
+    }
+    .dev-sign {
+      color: var(--accent2);
+      font-size: 1.01rem;
+      margin-bottom: 0.8rem;
+      margin-top: 2.1em;
+      font-style: italic;
+      letter-spacing: .2px;
+    }
+    /* Feature Panels */
+    .features {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.3rem;
+      justify-content: center;
+      padding: 0 1.2rem;
+    }
+    .feature-panel {
+      flex: 1 1 260px;
+      min-width: 260px;
+      max-width: 350px;
+      background: var(--panel);
+      border-radius: var(--radius-xl);
+      padding: 2.2rem 2rem 1.3rem 2rem;
+      box-shadow: var(--shadow);
+      border: 1.5px solid var(--border);
+      margin-bottom: 0.5rem;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-panel:hover {
+      transform: translateY(-6px) scale(1.025);
+      box-shadow: 0 8px 48px #b47aff44;
+      border-color: var(--accent2);
+    }
+    .feature-title {
+      font-size: 1.23rem;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 0.7rem;
+      letter-spacing: .5px;
+      display: flex;
+      align-items: center;
+    }
+    .feature-title .emoji {
+      font-size: 1.36em;
+      margin-right: 0.53em;
+      filter: drop-shadow(0 0 2px #0005);
+    }
+    .feature-desc {
+      color: var(--text-soft);
+      font-size: 1.07em;
+      line-height: 1.5;
+      margin-bottom: 0.35em;
+    }
+    /* Special Panel for Always Growing */
+    .feature-panel.grow {
+      background: linear-gradient(120deg, #18102b 84%, #2e0544 100%);
+      border: 1.5px solid var(--accent);
+    }
+    /* Docs CTA */
+    .docs-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2.8rem auto 0 auto;
+      gap: 1.1em;
+      max-width: 900px;
+      font-size: 1.09rem;
+    }
+    .docs-link {
+      background: linear-gradient(90deg, var(--accent2) 60%, var(--accent) 100%);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      border-radius: 2em;
+      font-size: 1.16em;
+      padding: 0.68em 1.7em;
+      cursor: pointer;
+      box-shadow: 0 2px 18px #8e42e835;
+      text-decoration: none;
+      letter-spacing: 0.4px;
+      transition: background 0.19s, color 0.16s, transform 0.14s;
+      margin-left: 0.4em;
+    }
+    .docs-link:hover {
+      background: linear-gradient(90deg, #d2b2ff 70%, var(--accent2) 100%);
+      color: #180c28;
+      transform: translateY(-2px) scale(1.045);
+    }
+    /* Responsive Design */
+    @media (max-width: 1000px) {
+      .features {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .feature-panel {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 560px) {
+      .hero-title { font-size: 1.45rem;}
+      .hero-logo { width: 60px; height: 60px;}
+      .hero-logo img { width: 46px; height: 46px;}
+      .feature-panel { padding: 1.3rem 1.1rem 0.7rem 1.1rem;}
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      color: #a78be6;
+      opacity: 0.85;
+      font-size: 0.99em;
+      margin-top: 4rem;
+      padding-bottom: 1.7em;
+      padding-top: 1.4em;
+      background: linear-gradient(180deg, transparent 0, #140624 95%);
+      border-top: 1.5px solid #21163a;
+      letter-spacing: 0.5px;
+    }
+    .copyright {
+      color: #8b51c7;
+      font-size: 0.97em;
+      margin-top: 0.7em;
+      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+      letter-spacing: 0.2px;
+      opacity: 0.93;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="hero">
+      <div class="hero-logo">
+        <img src="logo.png" alt="Bot Logo">
+      </div>
+      <div class="hero-title">The Moonlight Alliance</div>
+      <div class="hero-sub">Moderation &amp; Management that helps you navigate the Moonlight.</div>
+      <div class="hero-desc">
+        The Moonlight Alliance (TMA) is more than just another Discord bot — it’s a toolkit born from real needs, crafted by server owners who wanted more from their communities. Whether you’re building a close-knit guild or a booming social hub, TMA is designed to give you control, clarity, and convenience.<br><br>
+        Is it the perfect fit for every server? Maybe not. But if you're looking for a feature-rich, constantly evolving bot that puts power and customization in your hands, you're in the right place. We built TMA to solve problems we faced ourselves, and now we're sharing it with you — hoping it becomes just as essential to your community as it is to ours.
+      </div>
+      <div class="dev-sign">
+        — TMA Dev, The Space Wolf
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature-panel">
+        <div class="feature-title"><span class="emoji">🛡️</span> Moderation</div>
+        <div class="feature-desc">
+          Say goodbye to clunky, limited moderation tools. TMA brings a clean, intuitive moderation system that fits any admin style. Whether you're using Slash Commands, quick-action moderation shortcuts, or automated tools — we've got you covered. Keep your server safe without breaking a sweat.
+        </div>
+      </div>
+      <div class="feature-panel">
+        <div class="feature-title"><span class="emoji">🔧</span> Utility</div>
+        <div class="feature-desc">
+          Need tools that do more than just the basics? From member management to role automation, server info commands, and productivity utilities — TMA helps you run things smoothly behind the scenes. Give your server structure, without the stress.
+        </div>
+      </div>
+      <div class="feature-panel grow">
+        <div class="feature-title"><span class="emoji">🚀</span> Always Growing</div>
+        <div class="feature-desc">
+          TMA is packed with features beyond just moderation and utility — and we’re constantly updating it based on community feedback and real-world use. Whether it’s fun extras or server-specific tools, there’s always something new to discover.
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-cta">
+      <span>Explore the full range of commands, features, and setup tips in our</span>
+      <a class="docs-link" href="docs.html">Docs</a>
+    </div>
+  </main>
+  <footer>
+    <div>
+      &copy; The Moonlight Alliance &amp; Howlz Digital Studios — 2025. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
