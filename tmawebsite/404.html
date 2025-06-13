@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | The Moonlight Alliance</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .error-container {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    
+    .error-code {
+      font-size: 8rem;
+      font-weight: 700;
+      margin: 0;
+      background: linear-gradient(to right, var(--accent-color), var(--accent-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+    }
+    
+    .error-message {
+      font-size: 1.5rem;
+      margin: 1rem 0 2rem;
+    }
+    
+    .error-icon {
+      font-size: 6rem;
+      margin: 2rem 0;
+      color: var(--accent-color);
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    .error-text {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .error-suggestion {
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 2rem;
+      border-left: 4px solid var(--accent-color);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="logo">
+        <i class="fas fa-moon"></i> <span>The Moonlight Alliance</span>
+      </a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="store.html">Store</a>
+        <a href="guidelines.html">Guidelines</a>
+        <a href="agreement.html">Server Agreement</a>
+        <a href="terms.html">Terms</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="error-container">
+    <div class="container">
+      <i class="fas fa-moon-cloud error-icon"></i>
+      <h1 class="error-code">404</h1>
+      <h2 class="error-message">Page Not Found</h2>
+      
+      <div class="error-text">
+        <p>Well, this is awkward. You've somehow managed to find a page that doesn't exist.</p>
+        <p>Look, I'm not saying it's your fault... but I'm pretty sure I didn't misplace it.</p>
+      </div>
+      
+      <div class="error-suggestion">
+        <p><strong>Did you:</strong></p>
+        <ul style="text-align: left; margin: 1rem 0 1rem 2rem;">
+          <li>Mistype the URL? (We all make mistakes, I guess.)</li>
+          <li>Follow an outdated link? (Not your fault, but still annoying.)</li>
+          <li>Click something you shouldn't have? (No judgment... much.)</li>
+        </ul>
+      </div>
+      
+      <div class="error-actions">
+        <a href="javascript:history.back()" class="btn btn-outline">
+          <i class="fas fa-arrow-left"></i> Go Back
+        </a>
+        <a href="index.html" class="btn">
+          <i class="fas fa-home"></i> Return Home
+        </a>
+        <a href="#top" onclick="document.getElementById('lost-report').style.display='block'; return false;" class="btn btn-outline">
+          <i class="fas fa-flag"></i> Report Issue
+        </a>
+      </div>
+      
+      <div id="lost-report" style="display: none; margin-top: 2rem;" class="card animate-on-scroll">
+        <p>Thanks for wanting to report this issue! But let's be honest, we both know you're just going to close this tab and move on with your life.</p>
+        <p>If you're actually serious about reporting this, email us at <span style="color: var(--accent-color);">dev@moonlightalliance.online</span> and tell us how you got here.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links" style="margin-bottom: 1rem;">
+        <a href="terms.html" style="color: var(--secondary-text); margin: 0 0.5rem;">Terms of Service</a>
+        <a href="terms.html#privacy" style="color: var(--secondary-text); margin: 0 0.5rem;">Privacy Policy</a>
+        <a href="guidelines.html" style="color: var(--secondary-text); margin: 0 0.5rem;">Community Guidelines</a>
+      </div>
+      <p class="copyright">© Howlz Digital Studios 2025 - All rights reserved - Contact dev@moonlightalliance.online</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Replace moon icon with a more appropriate one if available
+    document.addEventListener('DOMContentLoaded', function() {
+      const moonIcon = document.querySelector('.error-icon');
+      // Check if fa-face-meh exists in the loaded Font Awesome version
+      if (moonIcon) {
+        moonIcon.className = 'fas fa-face-rolling-eyes error-icon';
+      }
+    });
+  </script>
+</body>
+</html>
