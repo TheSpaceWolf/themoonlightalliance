@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Economy Store - The Moonlight Alliance</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="logo">
+        <i class="fas fa-moon"></i> <span>The Moonlight Alliance</span>
+      </a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="store.html">Store</a>
+        <a href="guidelines.html">Guidelines</a>
+        <a href="agreement.html">Server Agreement</a>
+        <a href="terms.html">Terms</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">🛒 Economy Store</h1>
+      
+      <div class="card animate-on-scroll">
+        <p>Browse our extensive collection of items available in the TMA economy system. Use the following commands to interact with the store:</p>
+        <ul style="margin: 1rem 0 1rem 2rem;">
+          <li><code style="background: var(--secondary-bg); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">/store view</code> - Browse all available items</li>
+          <li><code style="background: var(--secondary-bg); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">/store buy</code> - Purchase an item</li>
+          <li><code style="background: var(--secondary-bg); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">/store info</code> - Get detailed information about an item</li>
+        </ul>
+      </div>
+      
+      <div class="category-header">
+        <span class="category-common"><i class="fas fa-square"></i></span>
+        <h2>COMMON ITEMS</h2>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Grass</strong></td>
+            <td>Does nothing… See how many you can collect!</td>
+            <td><strong>1 Coin</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Moonlight Plus Shard</strong></td>
+            <td>Collect 15 to get 1 Moonlight Plus Token!</td>
+            <td><strong>950 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Dog</strong></td>
+            <td>Woof woof! He'll bring back rewards every 24 hours.</td>
+            <td><strong>3,000 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Lawyer</strong></td>
+            <td>"Did you know you have rights? The Constitution says you do!" 35% chance to block a fine. If successful, takes 25% of the fine and goes on cooldown for 24 hours.</td>
+            <td><strong>4,000 Coins</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="category-header">
+        <span class="category-rare"><i class="fas fa-square"></i></span>
+        <h2>RARE ITEMS</h2>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Moonlight Savings Bank Note</strong></td>
+            <td>+15% to all currency gains, +3% to all losses for 24 hours <em>(Does not stack)</em>.</td>
+            <td><strong>3,000 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Marriage Certificate</strong></td>
+            <td>Marry another user! Merges banks and property (some items excluded). Cash remains separate. Either spouse can pull from shared bank. Divorce via admin; Lawyer may affect outcome.</td>
+            <td><strong>3,500 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Chaos Box</strong></td>
+            <td>Open for a random effect: good, bad, or just… meh.</td>
+            <td><strong>4,500 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Employee</strong></td>
+            <td>Hire a worker! Boost your company's passive income by 25%.</td>
+            <td><strong>5,000 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Chronosphere Access Key</strong></td>
+            <td>Unlock time and space! Halves all economy cooldowns for 6 hours.</td>
+            <td><strong>3,500 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Dog Collar</strong></td>
+            <td>Makes your dog bring back better rewards.</td>
+            <td><strong>1,500 Coins</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="category-header">
+        <span class="category-super-rare"><i class="fas fa-square"></i></span>
+        <h2>SUPER RARE ITEMS</h2>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Get Out of Jail Free Card!</strong></td>
+            <td>Immune from police fines for 12 hours.</td>
+            <td><strong>12,000 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Credit Store</strong></td>
+            <td>Boosts your company's income by +1% permanently <em>(Max 15%)</em>.</td>
+            <td><strong>10,000 Coins (each)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Bail Enforcement Contract</strong></td>
+            <td>You're assigned a random target. Do <code>/trackdown [user]</code> then beat them in a duel. If successful, earn <strong>15,000 Coins</strong>.</td>
+            <td><strong>10,000 Coins</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="category-header">
+        <span class="category-black-market"><i class="fas fa-user-secret"></i></span>
+        <h2>THE BLACK MARKET</h2>
+      </div>
+      
+      <div class="card" style="margin-bottom: 2rem;">
+        <p><em>Available to STAFF & PREMIUM users only. Uses <strong>Light Shards</strong> (Premium Currency).</em></p>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sabotage Kit</strong></td>
+            <td>Reduces a user's company passive income <em>(next payout only)</em>.</td>
+            <td><strong>15 Light Shards</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Bribe</strong></td>
+            <td>Avoid your next police fine. 100% success. One-time use.</td>
+            <td><strong>25 Light Shards</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Currency Trade (Buy)</strong></td>
+            <td>Get 150 Coins in exchange.</td>
+            <td><strong>15 Light Shards</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Currency Trade (Sell)</strong></td>
+            <td>Get 15 Light Shards.</td>
+            <td><strong>200 Coins</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Coupon Code</strong></td>
+            <td>Get 10% off your next store purchase.</td>
+            <td><strong>5 Light Shards</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Alliance Stock Share</strong></td>
+            <td>Buy a stock at its current value. Every 24h, its value changes by ±1–15%. Sell at current value. <em>(Price varies; purchasable with Coins or Light Shards)</em></td>
+            <td><strong>Varies</strong></td>
+          </tr>
+          <tr>
+            <td><strong>TIME PARADOX</strong></td>
+            <td>Instantly resets all Economy and Fun command cooldowns.</td>
+            <td><strong>30 Light Shards</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links" style="margin-bottom: 1rem;">
+        <a href="terms.html" style="color: var(--secondary-text); margin: 0 0.5rem;">Terms of Service</a>
+        <a href="terms.html#privacy" style="color: var(--secondary-text); margin: 0 0.5rem;">Privacy Policy</a>
+        <a href="guidelines.html" style="color: var(--secondary-text); margin: 0 0.5rem;">Community Guidelines</a>
+      </div>
+      <p class="copyright">© Howlz Digital Studios 2025 - All rights reserved - Contact dev@moonlightalliance.online</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
