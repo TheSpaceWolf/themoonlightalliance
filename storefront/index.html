@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🛒 Economy Storefront — Discord Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-bg: #111018;
+      --secondary-bg: #1d1b28;
+      --accent: #ae81ff;
+      --accent2: #6a33b4;
+      --text-main: #d6cbff;
+      --text-muted: #bda7ff;
+      --border: #332650;
+      --green: #3cff75;
+      --blue: #65caff;
+      --yellow: #ffe066;
+      --rare: #4c4cff;
+      --superrare: #f9d923;
+      --blackmarket: #b1007e;
+      --shadow: 0 2px 14px rgba(105, 60, 255, 0.15);
+    }
+    body {
+      background: var(--primary-bg);
+      color: var(--text-main);
+      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      padding: 0 0 80px 0;
+      animation: fadeIn 0.9s ease;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(16px);}
+      100% { opacity: 1; transform: none;}
+    }
+    header {
+      text-align: center;
+      padding: 2.2rem 0 1.2rem 0;
+    }
+    header h1 {
+      font-size: 2.6rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin: 0 0 0.3em 0;
+      font-weight: 800;
+      text-shadow: 0 0 8px var(--accent2), 0 0 2px #000;
+    }
+    .note {
+      color: var(--text-muted);
+      font-size: 1.08rem;
+      margin-bottom: 1.6rem;
+      font-style: italic;
+    }
+    section {
+      max-width: 900px;
+      margin: 2.2rem auto;
+      background: var(--secondary-bg);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 2rem 2.4rem 1.7rem 2.4rem;
+      border: 2px solid var(--border);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow-x: auto;
+      animation: fadeIn 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 1em;
+      font-size: 1.5rem;
+      color: var(--accent2);
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+    }
+    section h2 .emoji {
+      font-size: 1.5em;
+      margin-right: 0.6em;
+      filter: drop-shadow(0 0 2px #0008);
+    }
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0.7rem;
+    }
+    th, td {
+      padding: 0.7em 0.5em;
+      text-align: left;
+    }
+    th {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.07em;
+      background: rgba(85, 60, 120, 0.15);
+      border-bottom: 2px solid var(--border);
+    }
+    td {
+      border-bottom: 1px solid #24203c;
+      vertical-align: top;
+      font-size: 1.06em;
+      transition: background 0.16s;
+    }
+    tr:hover td {
+      background: rgba(174,129,255,0.10);
+    }
+    /* Rarity Colors */
+    .common { color: var(--green); font-weight: 700;}
+    .rare { color: var(--rare); font-weight: 700;}
+    .superrare { color: var(--superrare); font-weight: 700; }
+    .blackmarket { color: var(--blackmarket); font-weight: 700;}
+    /* Black Market Badge */
+    .blackmarket-badge {
+      display: inline-block;
+      background: linear-gradient(90deg,#570071,#d500a6);
+      color: #fff;
+      border-radius: 8px;
+      padding: 0.2em 0.7em;
+      font-size: 0.97em;
+      font-weight: 700;
+      margin-bottom: 0.7em;
+      margin-left: 0.5em;
+      letter-spacing: 1px;
+      vertical-align: middle;
+      box-shadow: 0 1px 5px #b1007e40;
+    }
+    /* Command Buttons */
+    .commands {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2em;
+      margin: 1.7em 0 0.6em 0;
+    }
+    .cmd-btn {
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      color: #fff;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      font-size: 1.12em;
+      font-family: inherit;
+      font-weight: 700;
+      padding: 0.63em 1.55em;
+      margin: 0.15em 0;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #5738b860;
+      transition: background 0.18s, transform 0.12s;
+    }
+    .cmd-btn:hover {
+      background: linear-gradient(90deg, #d2b2ff, var(--accent2));
+      color: #111018;
+      transform: translateY(-2px) scale(1.04);
+    }
+    /* Rarity Animations */
+    .sparkle {
+      animation: sparkle 2.5s infinite;
+      filter: drop-shadow(0 0 6px var(--superrare));
+    }
+    @keyframes sparkle {
+      0%,100% { opacity:1; transform:scale(1);}
+      40% { opacity:0.8; transform:scale(1.11);}
+      50% { opacity:1; filter:brightness(1.6);}
+      60% { opacity:1; }
+    }
+    .glow {
+      text-shadow: 0 0 8px var(--accent), 0 0 18px #0008;
+      animation: glowPulse 2.5s infinite;
+    }
+    @keyframes glowPulse {
+      0%,100% { text-shadow: 0 0 8px var(--accent), 0 0 18px #0008; }
+      50% { text-shadow: 0 0 18px var(--accent), 0 0 24px var(--accent2);}
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      section { padding: 1.2rem 0.6rem 1.4rem 0.6rem; }
+      th, td { font-size: 0.99em; }
+      .commands { gap: 0.7em;}
+      header h1 { font-size: 2rem;}
+    }
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.99em;
+      margin-top: 2.2rem;
+      letter-spacing: 0.5px;
+      opacity: 0.87;
+      padding-bottom: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="glow">🛒 Economy Store</h1>
+    <div class="note">
+      Browse the shop below! To view or buy items, use <span style="color:var(--accent2); font-weight:bold;">/store view</span>, <span style="color:var(--accent2); font-weight:bold;">/store buy</span>, or <span style="color:var(--accent2); font-weight:bold;">/store info</span> in Discord.
+    </div>
+    <div class="commands">
+      <button class="cmd-btn" onclick="copyCommand('/store view')">/store view</button>
+      <button class="cmd-btn" onclick="copyCommand('/store buy')">/store buy</button>
+      <button class="cmd-btn" onclick="copyCommand('/store info')">/store info</button>
+    </div>
+    <div id="copyMsg" style="display:none; margin-top:0.8em; color:var(--accent); font-weight:700;">Copied!</div>
+  </header>
+
+  <section>
+    <h2><span class="emoji">🟩</span> COMMON ITEMS</h2>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td class="common">Grass</td>
+        <td>Does nothing… See how many you can collect!</td>
+        <td><b>1 Coin</b></td>
+      </tr>
+      <tr>
+        <td class="common">Moonlight Plus Shard</td>
+        <td>Collect 15 to get 1 Moonlight Plus Token!</td>
+        <td><b>950 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="common">Dog</td>
+        <td>Woof woof! He’ll bring back rewards every 24 hours.</td>
+        <td><b>3,000 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="common">Lawyer</td>
+        <td>“Did you know you have rights? The Constitution says you do!” 35% chance to block a fine. If successful, takes 25% of the fine and goes on cooldown for 24 hours.</td>
+        <td><b>4,000 Coins</b></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🟦</span> RARE ITEMS</h2>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td class="rare">Moonlight Savings Bank Note</td>
+        <td>+15% to all currency gains, +3% to all losses for 24 hours <i>(Does not stack)</i>.</td>
+        <td><b>3,000 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="rare">Marriage Certificate</td>
+        <td>Marry another user! Merges banks and property (some items excluded). Cash remains separate. Either spouse can pull from shared bank. Divorce via admin; Lawyer may affect outcome.</td>
+        <td><b>3,500 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="rare">Chaos Box</td>
+        <td>Open for a random effect: good, bad, or just… meh.</td>
+        <td><b>4,500 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="rare">Employee</td>
+        <td>Hire a worker! Boost your company’s passive income by 25%.</td>
+        <td><b>5,000 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="rare">Chronosphere Access Key</td>
+        <td>Unlock time and space! Halves all economy cooldowns for 6 hours.</td>
+        <td><b>3,500 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="rare">Dog Collar</td>
+        <td>Makes your dog bring back better rewards.</td>
+        <td><b>1,500 Coins</b></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🟨</span> SUPER RARE ITEMS <span class="sparkle">✨</span></h2>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td class="superrare">Get Out of Jail Free Card!</td>
+        <td>Immune from police fines for 12 hours.</td>
+        <td><b>12,000 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="superrare">Credit Store</td>
+        <td>Boosts your company’s income by +1% permanently <i>(Max 15%)</i>.</td>
+        <td><b>10,000 Coins (each)</b></td>
+      </tr>
+      <tr>
+        <td class="superrare">Bail Enforcement Contract</td>
+        <td>You’re assigned a random target. Do <b>/trackdown [user]</b> then beat them in a duel. If successful, earn <b>15,000 Coins</b>.</td>
+        <td><b>10,000 Coins</b></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🕵️‍♂️</span> THE BLACK MARKET <span class="blackmarket-badge">STAFF & PREMIUM</span></h2>
+    <div style="margin-bottom: 0.7em; color:var(--text-muted); font-size:1em;">
+      <b>Available to STAFF & PREMIUM users only.</b> Uses <span style="color:var(--accent); font-weight:600;">Light Shards</span> (Premium Currency).
+    </div>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td class="blackmarket">Sabotage Kit</td>
+        <td>Reduces a user’s company passive income <i>(next payout only)</i>.</td>
+        <td><b>15 Light Shards</b></td>
+      </tr>
+      <tr>
+        <td class="blackmarket">Bribe</td>
+        <td>Avoid your next police fine. 100% success. One-time use.</td>
+        <td><b>25 Light Shards</b></td>
+      </tr>
+      <tr>
+        <td class="blackmarket">Currency Trade (Buy)</td>
+        <td>Get 150 Coins in exchange.</td>
+        <td><b>15 Light Shards</b></td>
+      </tr>
+      <tr>
+        <td class="blackmarket">Currency Trade (Sell)</td>
+        <td>Get 15 Light Shards.</td>
+        <td><b>200 Coins</b></td>
+      </tr>
+      <tr>
+        <td class="blackmarket">Coupon Code</td>
+        <td>Get 10% off your next store purchase.</td>
+        <td><b>5 Light Shards</b></td>
+      </tr>
+      <tr>
+        <td class="blackmarket">Alliance Stock Share</td>
+        <td>Buy a stock at its current value. Every 24h, its value changes by ±1–15%. Sell at current value. <i>(Price varies; purchasable with Coins or Light Shards)</i></td>
+        <td><b>Varies</b></td>
+      </tr>
+      <tr>
+        <td class="blackmarket">TIME PARADOX</td>
+        <td>Instantly resets all Economy and Fun command cooldowns.</td>
+        <td><b>30 Light Shards</b></td>
+      </tr>
+    </table>
+  </section>
+
+  <footer>
+    <span>🚀 Powered by your Discord bot's global economy system. <br>For details or purchases, use <b>/store</b> commands in your Discord server.</span>
+  </footer>
+  <script>
+    // Command copy to clipboard
+    function copyCommand(cmd) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(cmd);
+        showCopyMsg();
+      } else {
+        window.prompt("Copy this command:", cmd);
+      }
+    }
+    function showCopyMsg() {
+      const msg = document.getElementById('copyMsg');
+      msg.style.display = 'block';
+      setTimeout(() => { msg.style.display = 'none'; }, 1200);
+    }
+
+    // Gentle highlight on hover for rarity sections
+    document.querySelectorAll('section').forEach(section => {
+      section.addEventListener('mouseenter', () => {
+        section.style.boxShadow = "0 2px 30px #ae81ff48";
+      });
+      section.addEventListener('mouseleave', () => {
+        section.style.boxShadow = "0 2px 14px rgba(105, 60, 255, 0.15)";
+      });
+    });
+  </script>
+</body>
+</html>
