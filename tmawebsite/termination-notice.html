@@ -89,31 +89,40 @@
       margin-right: 1rem;
       margin-top: 0.2rem;
     }
+    
+    .website-notice {
+      background-color: var(--secondary-bg);
+      border: 2px solid var(--warning-color);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="container header-content">
-      <a href="index.html" class="logo">
+      <div class="logo" style="margin: 0 auto;">
         <i class="fas fa-moon"></i> <span>The Moonlight Alliance</span>
-      </a>
-      <button class="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="store.html">Store</a>
-        <a href="guidelines.html">Guidelines</a>
-        <a href="agreement.html">Server Agreement</a>
-        <a href="terms.html">Terms</a>
-        <a href="faq.html">FAQ</a>
-      </nav>
+      </div>
     </div>
   </header>
 
   <section class="shutdown-container">
     <div class="container">
       <div class="shutdown-content">
+        
+        <div class="website-notice">
+          <p style="color: var(--warning-color); font-weight: bold; margin-bottom: 0.5rem;">
+            <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>
+            Website Functionality Disabled
+          </p>
+          <p style="color: var(--secondary-text); font-size: 0.9rem;">
+            All website pages and navigation have been disabled. This is the only remaining active page.
+          </p>
+        </div>
+        
         <i class="fas fa-power-off shutdown-icon"></i>
         <h1 class="shutdown-title">The Moonlight Alliance Has Shut Down</h1>
         <p class="shutdown-subtitle">
@@ -141,7 +150,7 @@
           <div class="timeline-item">
             <i class="fas fa-database timeline-icon"></i>
             <div>
-              <strong>User Data:</strong> We have lost access to all user data and server configs. Sorry, Nothing we could do.
+              <strong>User Data:</strong> All user data and server configurations have been securely archived and will be retained according to our privacy policy.
             </div>
           </div>
           <div class="timeline-item">
@@ -154,6 +163,12 @@
             <i class="fas fa-cog timeline-icon"></i>
             <div>
               <strong>Server Features:</strong> All moderation tools, utilities, and custom configurations are no longer functional.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <i class="fas fa-globe timeline-icon"></i>
+            <div>
+              <strong>Website:</strong> All website functionality has been disabled except for this final notice page.
             </div>
           </div>
         </div>
@@ -201,7 +216,7 @@
             <strong>For Server Owners:</strong> You will need to find alternative moderation and utility bots for your Discord servers. We recommend researching well-established alternatives that can meet your community's needs.
           </p>
           <p style="margin-bottom: 1rem;">
-            <strong>For Data Requests:</strong> We appologise but we no longer have access to your data. If you need something specific, DM a member of staff and we can try to see if we have a log of it.
+            <strong>For Data Requests:</strong> If you need specific data exports or have questions about your server's information, please contact us at dev@moonlightalliance.online within the next 30 days.
           </p>
           <p>
             <strong>For Future Updates:</strong> Follow Howlz Digital Studios for news about future projects and developments.
@@ -211,14 +226,14 @@
         <div style="margin-top: 2rem; padding: 1rem; background-color: rgba(248, 113, 113, 0.1); border-radius: 0.5rem;">
           <p style="font-size: 0.9rem; color: var(--secondary-text);">
             <i class="fas fa-calendar" style="margin-right: 0.5rem;"></i>
-            Service discontinued: July 14th 2024
+            Service discontinued: <span id="shutdown-date"></span>
           </p>
         </div>
         
         <div style="margin-top: 3rem; padding: 2rem; text-align: center; background: linear-gradient(135deg, var(--accent-dark), var(--accent-color)); border-radius: 0.5rem;">
           <h2 style="color: white; margin-bottom: 1rem;">Thank You for the Journey</h2>
           <p style="color: white; font-size: 1.1rem;">
-            🌙 The Moonlight Alliance • 23rd Augus 2024 - 14th July 2025
+            🌙 The Moonlight Alliance • 2024-2025 • Forever in our hearts 🌙
           </p>
         </div>
       </div>
@@ -227,16 +242,10 @@
 
   <footer>
     <div class="container">
-      <div class="footer-links" style="margin-bottom: 1rem;">
-        <a href="terms.html" style="color: var(--secondary-text); margin: 0 0.5rem;">Terms of Service</a>
-        <a href="terms.html#privacy" style="color: var(--secondary-text); margin: 0 0.5rem;">Privacy Policy</a>
-        <a href="guidelines.html" style="color: var(--secondary-text); margin: 0 0.5rem;">Community Guidelines</a>
-      </div>
       <p class="copyright">© Howlz Digital Studios 2025 - All rights reserved - Contact dev@moonlightalliance.online</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
   <script>
     // Set the shutdown date timestamp
     document.addEventListener('DOMContentLoaded', function() {
